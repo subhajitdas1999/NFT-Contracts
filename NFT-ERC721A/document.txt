@@ -1,0 +1,5 @@
+This Modifies the ERC721 . and helps to mint multiple token at once.
+
+It takes the mintAmount as a parameter. and mapped it . if currentindex is 1 and user minted
+
+10 token then the mapping will be (1 => msg.sender) and currentindex will be 11 (msg.sender is the owner of tokenIDs from 1 - 10 t)

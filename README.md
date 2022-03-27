@@ -9,3 +9,7 @@ all nft contracts
 2. ERC721A contract is deployed at kovan test network 0xdBCc5cD76C5d011b1D548f99B1f18e289F96Dc17
 
     contract is verified at [Etherscan](https://kovan.etherscan.io/address/0xdBCc5cD76C5d011b1D548f99B1f18e289F96Dc17)
+
+3. ERC1155 contract is deployed at kovan test network 0x1860116665B1674BD003B61984F23Ba0D5a03730
+
+    contract is verified at [Etherscan](https://kovan.etherscan.io/address/0x1860116665B1674BD003B61984F23Ba0D5a03730)

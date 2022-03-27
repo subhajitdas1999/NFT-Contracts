@@ -1,0 +1,2 @@
+ERC1155 allow us to deploy multiple NFT & FT with a single smart contract.
+

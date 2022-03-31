@@ -6,7 +6,6 @@ all nft contracts
 ERC721 contract deployed at Kovan test network 0x2F8236Ac602199B722016BA014BE966b2D8BA383.
 
 contract is verified at [Etherscan](https://kovan.etherscan.io/address/0x2f8236ac602199b722016ba014be966b2d8ba383#code)
-opensea testnet sell [visit](https://testnets.opensea.io/collection/my-planet-collection)
 
 my opensea collection [visit this](https://testnets.opensea.io/collection/my-planet-collection)
 

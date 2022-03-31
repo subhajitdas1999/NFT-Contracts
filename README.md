@@ -7,6 +7,8 @@ all nft contracts
 
     contract is verified at [Etherscan](https://kovan.etherscan.io/address/0x2f8236ac602199b722016ba014be966b2d8ba383#code)
     -opensea testnet sell [visit](https://testnets.opensea.io/collection/my-planet-collection)
+    
+    my opensea collection [visit this](https://testnets.opensea.io/collection/my-planet-collection)
 
 # ERC721A
 

@@ -10,7 +10,7 @@ contract MyMarketPlace{
     address payable private immutable _feeReciever;
 
     //fee percent, going to add on each item
-    uint private immutable feePercent;
+    uint private immutable feePercentage;
 
     //minimum price for listing an NFT
     uint private minListingPrice= 0.00001 ether;
@@ -31,6 +31,7 @@ contract MyMarketPlace{
     mapping(uint => Item) public items;
 
     //mapping [contractAddress][tokenId] => itemID to prevent duplicate listing
+    mapping(IERC721 => mapping(uint => uint)) private _collections;
     
 
     //event for item listing 
@@ -38,17 +39,20 @@ contract MyMarketPlace{
     //event for item purchsed
     event purchsed(uint itemId,IERC721 contractAddress, uint tokenId,address from,uint price);
 
-    constructor (uint _feePersent){
+    constructor (uint _feePercentage){
         _feeReciever = payable(msg.sender);
-        feePercent = _feePersent;
+        feePercentage = _feePercentage;
     }
 
     function listNFTforSale(uint _price,IERC721 _contractAddress ,uint _tokenId) public{
         require(_price > minListingPrice,"minimum listing price is 0.00001 ether");
         require(_contractAddress.ownerOf(_tokenId) == msg.sender,"Owner is  required for listing");
         require(_contractAddress.isApprovedForAll(msg.sender,address(this)),"Owner should approved this marketPlace as a operator before listings");
+        require(_validateAddressAndToken(_contractAddress,_tokenId),"NFT is already in sale");
         
+        //increment the itemId
         _itemcounter++;
+        //create an item
         Item memory item = Item(
             _itemcounter,
             _contractAddress,
@@ -57,8 +61,10 @@ contract MyMarketPlace{
             payable(msg.sender),
             false
         );
-
+        //add the item to items collection
         items[_itemcounter] = item;
+        // assign the itemId with corresponding contract address and token id
+        _collections[_contractAddress][_tokenId] = _itemcounter;
 
         emit listed(_itemcounter,_contractAddress,_tokenId,_price,msg.sender);
     }
@@ -89,7 +95,18 @@ contract MyMarketPlace{
 
     function getAmount(uint _itemId) private view returns(uint){         
         uint  price = items[_itemId].price;
-        return (price * feePercent) / 100;
+        return (price * feePercentage) / 100;
+    }
+
+    function _validateAddressAndToken(IERC721 _contractAddress, uint _tokenId) private view returns(bool){
+        //if the item is new return new
+        if(_collections[_contractAddress][_tokenId]==0){
+            return true;
+        }
+        uint itemId = _collections[_contractAddress][_tokenId]; 
+        Item memory item = items[itemId];
+        // if the item is alreay sold return true else false
+        return item.sold == true;
     }
 
     function _forwardFunds() private {

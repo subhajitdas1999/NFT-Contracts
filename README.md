@@ -21,7 +21,3 @@ ERC1155 contract is deployed at kovan test network 0x1860116665B1674BD003B61984F
 
 contract is verified at [Etherscan](https://kovan.etherscan.io/address/0x1860116665B1674BD003B61984F23Ba0D5a03730)
 
-# NFT-Marketplace 
-contract is deployed at 0x703fa5B52B0D7921dDb7954a23CBD00dE1875594
-
-contract verified at [Etherscan](https://kovan.etherscan.io/address/0x703fa5b52b0d7921ddb7954a23cbd00de1875594#code)
